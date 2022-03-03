@@ -1,10 +1,20 @@
 
 import jwt from 'jsonwebtoken';
+import * as Yup from 'yup';
 import User from '../models/User';
 import auth from '../../config/auth';
 
 class SessionController {
   async store(req,res){
+
+  const shema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().required(),
+  });
+
+  if (!(await shema.isValid(req.body))){
+    return res.status(400).json({error : 'Validation fails SC'});
+  }
 
   const { email, password } = req.body;
 
