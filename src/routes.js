@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
+import FileController from './app/controllers/FileController';
+import ProviderController from './app/controllers/ProviderController';
 
 import multer from 'multer';
 import multerConfig from './config/multer';
@@ -17,12 +19,9 @@ routes.post('/users',UserController.store);
 routes.use(authMiddleware);
 routes.put('/users' ,UserController.update);
 
-routes.post('/files', upload.single('file'), (req, res)=>{
-  //console.log(req.file);
-  //console.log(multerConfig.destination);  
+routes.post('/files', upload.single('file'), FileController.store);
 
-  return res.json({ ok: true});
-});
+routes.get('/providers', ProviderController.index);
 
 
 
