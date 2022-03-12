@@ -59,6 +59,12 @@ class AppointmentController{
       return res.status(400).json({ error: 'You can only appointments with providers'});
     }
 
+
+    if(provider_id == req.userID){
+      return res.status(400).json({ error: 'Not can open appontments for you'});
+    }
+
+
     const hourStart = startOfHour(parseISO(date));
     console.log(hourStart);
     if(isBefore(hourStart, new Date())){
