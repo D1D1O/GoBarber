@@ -2,8 +2,8 @@ import nodemailer from 'nodemailer';
 import { resolve }  from 'path';
 import mailConfig from '../config/mail';
 import exphbs from 'express-handlebars';
-//import nodemailerhbs from 'nodemailer-express-handlebars';
-import nodemailerhbs from 'nodemailer-handlebars';
+import nodemailerhbs from 'nodemailer-express-handlebars';
+//import nodemailerhbs from 'nodemailer-handlebars';
 import { create } from 'express-handlebars';
 //const hbs = require('hbs');
 
